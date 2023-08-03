@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // Validar el correo electrónico y contraseña (puedes agregar más validaciones si es necesario)
       if (validateEmail(email) && password.trim() !== "") {
         // Si las credenciales son válidas, redirigir a la página de inicio
-        window.location.href = "pagina-de-inicio.html";
+        window.location.href = "/turnos.html";
       } else {
         alert("Por favor, ingresa un correo electrónico válido y una contraseña.");
       }
