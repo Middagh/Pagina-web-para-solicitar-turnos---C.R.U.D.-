@@ -1,7 +1,3 @@
-
-
-
-
 body {
     /* Establecer la imagen de fondo */
     background-image: url("/img/backHome.jpg");
@@ -12,4 +8,5 @@ body {
     /* Fijar la imagen de fondo para que no se mueva al desplazar la página */
     background-attachment: fixed;
   }
+ 
   

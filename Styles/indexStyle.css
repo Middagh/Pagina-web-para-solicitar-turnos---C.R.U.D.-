@@ -8,5 +8,7 @@ body {
     /* Fijar la imagen de fondo para que no se mueva al desplazar la página */
     background-attachment: fixed;
   }
-  
+  .switch-label {
+    font-size: 1.1rem; 
+}
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Reserva de Turnos médicos">
+    <meta name="author" content="Julio Middagh">
+    <title>Clinica Houssain</title>
+    <!-- Cargar el CSS de Boostrap-->
+    <link href="/Styles/turnos.Style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Clínica Houssain</a>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Botón que abrirá la ventana emergente -->
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ventanaEmergente">
+                Solicitar turno
+            </button>
+        </div>
+        <!-- Ventana emergente -->
+        <div class="modal fade" id="ventanaEmergente" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Contenido de la ventana emergente -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Turnos disponibles</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="container mt-5">
+                            <h2 class="mb-4">Reservar un turno</h2>
+                            <form id="formularioTurno">
+                                <div class="mb-3">
+                                    <label for="nombre">Nombre completo</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="especialidad">Especialidad del médico</label>
+                                    <select class="form-select" id="especialidad" name="especialidad" required>
+                                        <option value="" disabled selected>Selecciona una especialidad</option>
+                                        <option value="cardiologia">Cardiología - Dr. Perez</option>
+                                        <option value="dermatologia">Dermatología- Dra. Chavez</option>
+                                        <option value="ginecologia">Ginecología- Dr.Mate de Luna</option>
+                                        <!-- Agregar más opciones de especialidades aquí -->
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fecha">Fecha de la cita</label>
+                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="hora">Hora de la cita</label>
+                                    <input type="time" class="form-control" id="hora" name="hora" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Reservar turno</button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Div para mostrar información del turno reservado -->
+        <div id="turnoReservado" class="container mt-5 d-none">
+            <h2>Turno reservado con éxito</h2>
+            <p>Nombre: <span id="nombreTurno"></span></p>
+            <p>Correo electrónico: <span id="emailTurno"></span></p>
+            <p>Especialidad: <span id="especialidadTurno"></span></p>
+            <p>Fecha: <span id="fechaTurno"></span></p>
+            <p>Hora: <span id="horaTurno"></span></p>
+            <button type="button" class="btn btn-danger" onclick="cancelarTurno()">Cancelar turno</button>
+        </div>
+
+        <!-- Scripts de Bootstrap y otros scripts personalizados -->
+        <script src="/turnos.js" rel="text/javaScript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </main>
+</body>
+
+</html>
