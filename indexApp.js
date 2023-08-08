@@ -1,3 +1,20 @@
+// Función para validar el correo electrónico
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Función para redirigir al usuario después de iniciar sesión
+function redirectToLogin(isMedico) {
+  if (isMedico) {
+    // Redireccionar a la página de administración de médicos
+    window.location.href = "/administracion_medicos.html";
+  } else {
+    // Redireccionar a la página de administración de pacientes
+    window.location.href = "administracion_pacientes.html";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const formularioLogin = document.getElementById("formularioLogin");
 
@@ -10,29 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Validar el correo electrónico y contraseña (puedes agregar más validaciones si es necesario)
       if (validateEmail(email) && password.trim() !== "") {
-          // Realizar las acciones de inicio de sesión según el valor de "isMedico"
-          if (isMedico) {
-              // Redireccionar a la página de administración de médicos
-              window.location.href = "/administracion_medicos.html";
-          } else {
-              // Aquí puedes redireccionar a otra página o realizar las acciones para otro tipo de usuario
-              // Por ejemplo, a la página de administración de pacientes
-              window.location.href = "/administracion_pacientes.html";
-          }
+          // Redireccionar según el valor de "isMedico"
+          redirectToLogin(isMedico);
       } else {
           alert("Por favor, ingresa un correo electrónico válido y una contraseña.");
       }
   });
 });
 
-// Función para validar el correo electrónico
-function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
 document.getElementById("btnRegistrarse").addEventListener("click", function() {
   // Redirigir a la página de registro deseada
-  window.location.href = "/login.html"; // Reemplaza "pagina_registro.html" con la URL de la página de registro
+  window.location.href = "/login.html"; // Reemplaza "login.html" con la URL de la página de registro
 });
-
