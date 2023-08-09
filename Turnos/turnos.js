@@ -51,11 +51,41 @@ function guardarTurno(event) {
 
       // Mostrar mensaje de éxito (esto lo puedes modificar según tu diseño)
       alert("Turno reservado exitosamente.");
+
+      // Mostrar los turnos almacenados en la interfaz
+      mostrarTurnos();
     }
   } else {
     // Si la hora seleccionada está fuera del horario de atención, mostrar mensaje de error
     alert("Los turnos solo se pueden reservar entre las 8:30 y las 13:30, y entre las 17:00 y las 21:00.");
   }
+}
+
+// Función para mostrar los turnos en la interfaz
+function mostrarTurnos() {
+  const turnosContainer = document.getElementById("turnosContainer");
+  turnosContainer.innerHTML = "";
+
+  listaTurnos.forEach((turno, index) => {
+    const turnoDiv = document.createElement("div");
+    turnoDiv.className = "turno-item";
+    turnoDiv.innerHTML = `
+      <input type="text" value="${turno.nombre}" disabled>
+      <input type="text" value="${turno.email}" disabled>
+      <input type="text" value="${turno.especialidad}" disabled>
+      <input type="text" value="${turno.fecha}" disabled>
+      <input type="text" value="${turno.hora}" disabled>
+      <button class="btn btn-danger" onclick="cancelarTurno(${index})">Cancelar</button>
+    `;
+
+    turnosContainer.appendChild(turnoDiv);
+  });
+}
+
+// Función para cancelar el turno
+function cancelarTurno(index) {
+  listaTurnos.splice(index, 1); // Eliminar el turno del array
+  mostrarTurnos(); // Actualizar la visualización de los turnos
 }
 
 // Agregar evento al formulario cuando se envíe
@@ -73,34 +103,3 @@ fechaInput.max = fechaMaxima.toISOString().split("T")[0];
 const horaInput = document.getElementById("hora");
 horaInput.min = "08:30";
 horaInput.max = "21:00";
-
-
-
-  function cerrarSesion() {
-    // Aquí debes realizar las acciones necesarias para cerrar la sesión, por ejemplo, borrar cookies o limpiar el almacenamiento local.
-    
-    // Redireccionar a la página principal (index.html)
-    window.location.href = "index.html";
-  }
-
-// Función para guardar el turno
-function guardarTurno(event) {
-  // ... Código existente para guardar el turno ...
-
-  // Mostrar el div con la información del turno reservado
-  document.getElementById("turnoReservado").classList.remove("d-none");
-  document.getElementById("nombreTurno").innerText = nombre;
-  document.getElementById("emailTurno").innerText = email;
-  document.getElementById("especialidadTurno").innerText = especialidad;
-  document.getElementById("fechaTurno").innerText = fecha;
-  document.getElementById("horaTurno").innerText = hora;
-}
-
-// Función para cancelar el turno
-function cancelarTurno() {
-  // ... Código para cancelar el turno ...
-
-  // Ocultar el div con la información del turno reservado
-  document.getElementById("turnoReservado").classList.add("d-none");
-  document.getElementById("formularioTurno").reset();
-}
