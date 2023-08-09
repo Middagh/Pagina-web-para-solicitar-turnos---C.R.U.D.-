@@ -39,9 +39,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
         alert("Registro exitoso. Datos almacenados correctamente.");
 
-        // Redirección después de 5 segundos
-        setTimeout(function() {
-            window.location.href = "/index.html"; // Reemplaza "index.html" con la URL de tu página principal
-        }, 3000); // 3000 milisegundos (3 segundos)
     });
 });

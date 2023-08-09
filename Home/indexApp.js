@@ -8,10 +8,10 @@ function validateEmail(email) {
 function redirectToLogin(isMedico) {
   if (isMedico) {
     // Redireccionar a la página de administración de médicos
-    window.location.href = "/administracion_medicos.html";
+    window.location.href = "administracion_medicos.html";
   } else {
     // Redireccionar a la página de administración de pacientes
-    window.location.href = "administracion_pacientes.html";
+    window.location.href = "../Turnos/administracion_pacientes.html";
   }
 }
 
