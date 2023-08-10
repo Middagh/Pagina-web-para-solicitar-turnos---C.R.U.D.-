@@ -40,6 +40,21 @@
                         <option value="paciente">Paciente</option>
                     </select>
                 </div>
+                <div class=" col-md-6 input-group">
+                    <select id="Especializacionimput" class="form-select" aria-label="Default select example" required>
+                      <option selected disabled value="">Especialización</option>
+                      <option value="1">Cardiología</option>
+                      <option value="2">Cirugía General</option>
+                      <option value="3">Clínia médica</option>
+                      <option value="4">Dermatología</option>
+                      <option value="5">Gastroenterología</option>
+                      <option value="6">Ginecología</option>
+                      <option value="7">Oftalmología</option>
+                      <option value="8">Oncología</option>
+                      <option value="9">Pediatria</option>
+                      <option value="10">Traumatología</option>
+                    </select>
+                  </div>
                 <div class="col-12">
                     <label for="emailInput" class="form-label">Email</label>
                     <input type="email" class="form-control" id="emailInput" required maxlength="30">
@@ -49,16 +64,17 @@
                     <input type="password" class="form-control" id="inputPass" required maxlength="20">
                 </div>
                 <div class="col-md-6">
+                    <label for="inputPassRepeat" class="form-label">Repetir Contraseña</label>
+                    <input type="password" class="form-control" id="inputPassRepeat" required maxlength="20">
+                </div>
+                
+                <div class="col-md-6">
                     <label for="inputDirecc" class="form-label">Dirección</label>
                     <input type="text" class="form-control" id="inputDirecc" required maxlength="30">
                 </div>
                 <div class="col-md-6">
                     <label for="inputTelefono" class="form-label">Teléfono</label>
                     <input type="number" class="form-control" id="inputTelefono" required maxlength="20">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputCP" class="form-label">Código Postal</label>
-                    <input type="number" class="form-control" id="inputCP" required maxlength="20">
                 </div>
                 <div class="col-md-12 text-center mt-3 pb-3">
                     <button type="button" class="btn btn-success ">Registrate</button>

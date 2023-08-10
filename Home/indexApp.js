@@ -8,7 +8,7 @@ function validateEmail(email) {
 function redirectToLogin(isMedico) {
   if (isMedico) {
     // Redireccionar a la página de administración de médicos
-    window.location.href = "administracion_medicos.html";
+    window.location.href = "../Turnos/administracion_medicos.html";
   } else {
     // Redireccionar a la página de administración de pacientes
     window.location.href = "../Turnos/administracion_pacientes.html";
@@ -19,19 +19,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const formularioLogin = document.getElementById("formularioLogin");
 
   formularioLogin.addEventListener("submit", function (event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const isMedico = document.getElementById("switchOff").checked; // Verificar si el switch "Médico" está activado
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const isMedico = document.getElementById("switchOff").checked; // Verificar si el switch "Médico" está activado
 
-      // Validar el correo electrónico y contraseña (puedes agregar más validaciones si es necesario)
-      if (validateEmail(email) && password.trim() !== "") {
-          // Redireccionar según el valor de "isMedico"
-          redirectToLogin(isMedico);
+    // Validar el correo electrónico y contraseña (puedes agregar más validaciones si es necesario)
+    if (validateEmail(email) && password.trim() !== "") {
+      // Verificar el rol del usuario almacenado en localStorage
+      const storedUserRole = localStorage.getItem("rol");
+      if ((isMedico && storedUserRole === "medico") || (!isMedico && storedUserRole === "paciente")) {
+        // Redireccionar según el valor de "isMedico"
+        redirectToLogin(isMedico);
       } else {
-          alert("Por favor, ingresa un correo electrónico válido y una contraseña.");
+        alert("El usuario no tiene permisos para acceder a este rol.");
       }
+    } else {
+      alert("Por favor, ingresa un correo electrónico válido y una contraseña.");
+    }
   });
 });
 
